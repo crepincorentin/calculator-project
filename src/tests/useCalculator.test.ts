@@ -23,6 +23,87 @@ describe('useCalculator', () => {
     expect(result.current.display).toBe('5');
   });
 
+    it('should perform subtraction correctly', () => {
+        const { result } = renderHook(() => useCalculator());
+    
+        act(() => {
+            result.current.inputDigit('10');
+        });
+        act(() => {
+            result.current.selectOperator('-');
+        });
+        act(() => {
+            result.current.inputDigit('5');
+        });
+        act(() => {
+            result.current.calculateResult();
+        });
+    
+        expect(result.current.display).toBe('5');
+    });
+
+    it('should perform division correctly', () => {
+        const { result } = renderHook(() => useCalculator());
+
+        act(() => {
+            result.current.inputDigit('10');
+        });
+        act(() => {
+            result.current.selectOperator('/');
+        });
+        act(() => {
+            result.current.inputDigit('2');
+        });
+        act(() => {
+            result.current.calculateResult();
+        });
+        expect(result.current.display).toBe('5');
+    });
+
+    it('should perform multiplication correctly', () => {
+        const { result } = renderHook(() => useCalculator());
+    
+        act(() => {
+            result.current.inputDigit('2');
+        });
+        act(() => {
+            result.current.selectOperator('*');
+        });
+        act(() => {
+            result.current.inputDigit('3');
+        });
+        act(() => {
+            result.current.calculateResult();
+        });
+    
+        expect(result.current.display).toBe('6');
+    });
+
+    it('should clear display', () => {
+        const { result } = renderHook(() => useCalculator());
+    
+        act(() => {
+            result.current.inputDigit('2');
+        });
+        act(() => {
+            result.current.selectOperator('+');
+        });
+        act(() => {
+            result.current.inputDigit('3');
+        });
+        act(() => {
+            result.current.calculateResult();
+        });
+    
+        act(() => {
+            result.current.clear();
+        });
+    
+        expect(result.current.display).toBe('0');
+    });
+
+
+
   it('should store calculation in history', async () => {
     const { result } = renderHook(() => useCalculator());
   

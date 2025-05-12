@@ -1,12 +1,14 @@
 import { useCalculator } from '../hooks/useCalculator';
 import { Display } from './Display';
 
+// Define the buttons for the calculator
 const buttons = [
-  ['7', '8', '9', '+'],
-  ['4', '5', '6', '-'],
-  ['1', '2', '3', '*'],
-  ['0', 'C', '=', 'AC'],
-];
+    ['C', 'AC', '', ''],
+    ['7', '8', '9', '/'],
+    ['4', '5', '6', '*'],
+    ['1', '2', '3', '-'],
+    ['0', '.', '=', '+']
+  ];
 
 export const Calculator = () => {
     const {
@@ -22,7 +24,7 @@ export const Calculator = () => {
   
     const handleClick = (btn: string) => {
       if (/\d/.test(btn)) inputDigit(btn);
-      else if (['+', '-', '*'].includes(btn)) selectOperator(btn as '+' | '-' | '*');
+      else if (['+', '-', '*', '/'].includes(btn)) selectOperator(btn as '+' | '-' | '*' | '/');
       else if (btn === '=') calculateResult();
       else if (btn === 'C') clear();
       else if (btn === 'AC') clearHistory();
@@ -34,7 +36,7 @@ export const Calculator = () => {
           <Display value={display} />
           <div className="grid grid-cols-4 gap-4 mt-6">
             {buttons.flat().map((btn) => {
-              const isOperator = ['+', '-', '*', '=', 'C', 'AC'].includes(btn);
+              const isOperator = ['+', '-', '*', '=', 'C', 'AC', '/'].includes(btn);
               const isEquals = btn === '=';
               return (
                 <button

@@ -9,14 +9,14 @@ type HistoryItem = {
 export function useCalculator() {
   const [current, setCurrent] = useState('');
   const [previous, setPrevious] = useState('');
-  const [operator, setOperator] = useState<null | '+' | '-' | '*'>(null);
+  const [operator, setOperator] = useState<null | '+' | '-' | '*' | '/' >(null);
   const [history, setHistory] = useState<HistoryItem[]>([]);
 
   function inputDigit(digit: string) {
     setCurrent((prev) => prev + digit);
   }
 
-  function selectOperator(op: '+' | '-' | '*') {
+  function selectOperator(op: '+' | '-' | '*' | '/') {
     if (current === '') return;
     setPrevious(current);
     setCurrent('');
