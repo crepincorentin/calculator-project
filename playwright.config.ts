@@ -5,7 +5,7 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:5173/',
     browserName: 'chromium',
-    headless: false,
-    trace: 'on-first-retry'
+    headless: true,
+    trace: 'on-first-retry',
   },
 });

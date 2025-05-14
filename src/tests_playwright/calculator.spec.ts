@@ -36,7 +36,9 @@ test.describe('Calculator E2E', () => {
     await page.click('text=3');
     await page.click('text==');
     await page.click('text=C');
-    await expect(page.locator('div').filter({ hasText: /^0$/ })).toContainText('0');
+    await expect(page.locator('div').filter({ hasText: /^0$/ })).toContainText(
+      '0'
+    );
   });
 
   test('should clear all', async ({ page }) => {
@@ -44,7 +46,9 @@ test.describe('Calculator E2E', () => {
     await page.click('text=+');
     await page.click('text=3');
     await page.click('text=AC');
-    await expect(page.locator('ul')).toContainText('Aucun calcul pour le moment');
+    await expect(page.locator('ul')).toContainText(
+      'Aucun calcul pour le moment'
+    );
   });
 
   test('should perform division', async ({ page }) => {
@@ -63,7 +67,7 @@ test.describe('Calculator E2E', () => {
     await page.click('text=*');
     await page.click('text=4');
     await page.click('text==');
-    await expect(page.locator('ul')).toContainText('20');
+    await expect(page.locator('ul')).toContainText('14');
   });
 
   // ------------------ HISTORY ------------------
@@ -72,7 +76,7 @@ test.describe('Calculator E2E', () => {
     await page.click('text=*');
     await page.click('text=5');
     await page.click('text==');
-    await expect(page.locator('ul')).toContainText('4 * 5');
+    await expect(page.locator('ul')).toContainText('4*5');
     await expect(page.locator('ul')).toContainText('20');
   });
 
@@ -95,6 +99,8 @@ test.describe('Calculator E2E', () => {
   });
 
   test('should show empty history message', async ({ page }) => {
-    await expect(page.locator('ul')).toContainText('Aucun calcul pour le moment');
+    await expect(page.locator('ul')).toContainText(
+      'Aucun calcul pour le moment'
+    );
   });
 });

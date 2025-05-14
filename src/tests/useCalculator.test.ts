@@ -4,7 +4,6 @@ import { describe, it, expect } from 'vitest';
 import { waitFor } from '@testing-library/react';
 
 describe('useCalculator (expression-based)', () => {
-
   it('should evaluate full expression', () => {
     const { result } = renderHook(() => useCalculator());
 
@@ -93,11 +92,13 @@ describe('useCalculator (expression-based)', () => {
     expect(result.current.display).toBe('Erreur');
   });
 
-    it('should evaluate complex expression with multiple operations', () => {
+  it('should evaluate complex expression with multiple operations', () => {
     const { result } = renderHook(() => useCalculator());
 
     act(() => {
-      '10+2*3-4/2'.split('').forEach((char) => result.current.inputSymbol(char));
+      '10+2*3-4/2'
+        .split('')
+        .forEach((char) => result.current.inputSymbol(char));
     });
 
     act(() => {
