@@ -13,8 +13,7 @@ const buttons = [
 export const Calculator = () => {
     const {
       display,
-      inputDigit,
-      selectOperator,
+      inputSymbol,
       calculateResult,
       clear,
       history,
@@ -23,12 +22,12 @@ export const Calculator = () => {
     } = useCalculator();
   
     const handleClick = (btn: string) => {
-      if (/\d/.test(btn)) inputDigit(btn);
-      else if (['+', '-', '*', '/'].includes(btn)) selectOperator(btn as '+' | '-' | '*' | '/');
-      else if (btn === '=') calculateResult();
+      if (btn === '=') calculateResult();
       else if (btn === 'C') clear();
       else if (btn === 'AC') clearHistory();
+      else inputSymbol(btn);
     };
+
   
     return (
       <div className="flex justify-center items-center min-h-screen bg-black p-6 gap-8 flex-wrap mx-auto">

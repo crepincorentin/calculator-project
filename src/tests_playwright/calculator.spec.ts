@@ -47,6 +47,25 @@ test.describe('Calculator E2E', () => {
     await expect(page.locator('ul')).toContainText('Aucun calcul pour le moment');
   });
 
+  test('should perform division', async ({ page }) => {
+    await page.click('text=6');
+    await page.click('text=/');
+    await page.click('text=3');
+    await page.click('text==');
+    await expect(page.locator('ul')).toContainText('2');
+  });
+
+  // Tests opérations complexes
+  test('should perform complex operations', async ({ page }) => {
+    await page.click('text=2');
+    await page.click('text=+');
+    await page.click('text=3');
+    await page.click('text=*');
+    await page.click('text=4');
+    await page.click('text==');
+    await expect(page.locator('ul')).toContainText('20');
+  });
+
   // ------------------ HISTORY ------------------
   test('should store result in history', async ({ page }) => {
     await page.click('text=4');
@@ -73,5 +92,9 @@ test.describe('Calculator E2E', () => {
     await page.click('text==');
     await page.click('text=Utiliser');
     await expect(page.locator('ul')).toContainText('20');
+  });
+
+  test('should show empty history message', async ({ page }) => {
+    await expect(page.locator('ul')).toContainText('Aucun calcul pour le moment');
   });
 });
