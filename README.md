@@ -1,54 +1,56 @@
-# React + TypeScript + Vite
+# 🧮 Ma Calculatrice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce projet consiste en le développement d’une **calculatrice graphique** capable d’effectuer des opérations de base (addition, soustraction, multiplication), avec une fonctionnalité d’historique et une couverture complète en tests unitaires et E2E.
+Il a été entièrement développé en **TDD (Test Driven Development)**.
 
-Currently, two official plugins are available:
+## 💡 Fonctionnalités
+- ✅ Addition, soustraction, multiplication
+- ✅ Interface graphique interactive
+- ✅ Historique des calculs
+- ✅ Réutilisation d’un résultat précédent
+- ✅ Suppression de l’historique
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧱 Architecture
 
-## Expanding the ESLint configuration
+| Composant               | Description                                                                                           |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Logique métier**      | Gestion des calculs et de l’historique. Entièrement testée unitairement.                              |
+| **Interface graphique** | Permet à l’utilisateur d’entrer les valeurs, d’afficher les résultats et l’historique. Testée en E2E. |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+## 🧪 Méthodologie de développement
+Le développement a été mené **entièrement en TDD** (Test Driven Development), selon la séquence :
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Écriture d’un test (unitaire ou e2e)
+2. Implémentation du code minimal pour le faire passer
+3. Refactoring si nécessaire
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+## 🔬 Tests
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
-```
+| Type de test  | Outil utilisé         | Cible                                |
+| ------------- | --------------------- | ------------------------------------ |
+| **Unitaires** | Jest / Vitest         | Logique métier (calculs, historique) |
+| **E2E**       | Playwright            | Interface utilisateur (UI complète)  |
+
+## 🧹 Qualité du code
+Le projet intègre un **linter** (ESLint) afin de garantir une base de code propre et homogène.
+`npm run lint`
+
+## 🚀 Lancement du projet
+**1. Installation des dépendances**
+`npm install`
+
+**2. Lancement de l'application**
+`npm run dev`
+
+## 📦 Stack utilisée
+- **Framework UI** : React
+- **Tests unitaires** : Jest / Vitest
+- **Tests E2E** : Playwright
+- **Linting** : ESLint
+
+
+
+
+
+
